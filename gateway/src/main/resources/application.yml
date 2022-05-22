@@ -16,3 +16,7 @@ spring:
         uri: http://localhost:8092
         predicates:
         - Path=/consults/**
+      - id: micro3_1
+        uri: http://localhost:8024
+        predicates:
+        - Path=/bankingInquiries/**
