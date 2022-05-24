@@ -1,22 +1,14 @@
-server:
-  port: 8090
 spring:
+  application:
+    name: gateway-service
+  data:
+    mongodb:
+      uri: mongodb+srv://ADMIN:PRY2021131@cluster0.hlmad.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
   cloud:
-    gateway:
-      routes:
-      - id: micro1
-        uri: http://localhost:8022
-        predicates:
-        - Path=/client/**
-      - id: micro2
-        uri: http://localhost:8023
-        predicates:
-        - Path=/transaction/**
-      - id: micro3
-        uri: http://localhost:8092
-        predicates:
-        - Path=/consults/**
-      - id: micro3_1
-        uri: http://localhost:8024
-        predicates:
-        - Path=/bankingInquiries/**
+    config:
+      enabled: true
+      uri: http://localhost:8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
